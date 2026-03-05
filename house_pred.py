@@ -79,7 +79,7 @@ r2 = r2_score(y_test, y_pred)
 
 
 st.set_page_config(page_title="House Price Prediction", layout="wide")
-st.title("🏠 Internship-Level House Price Prediction System")
+st.title("🏠 House Price Prediction System")
 
 st.success("Model trained successfully!")
 
