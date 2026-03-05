@@ -50,8 +50,8 @@ data['price'] = (
 )
 
 # Split
-X = data.drop("price", axis=1)
-y = data["price"]
+X = data[['area', 'bedrooms', 'bathrooms', 'parking', 'location', 'age']]
+y = data['price']
 
 # Preprocessing
 numeric_features = ['area', 'bedrooms', 'bathrooms', 'parking', 'age']
@@ -79,7 +79,7 @@ r2 = r2_score(y_test, y_pred)
 
 
 st.set_page_config(page_title="House Price Prediction", layout="wide")
-st.title("🏠 House Price Prediction System")
+st.title("House Price Prediction System")
 
 st.success("Model trained successfully!")
 
@@ -111,7 +111,7 @@ if st.button("Predict Price"):
     prediction = model.predict(input_data)[0]
     prediction = max(0, prediction)
 
-    st.subheader(f"💰 Predicted Price: ₹ {prediction:,.0f}")
+    st.subheader(f"Predicted Price: ₹ {prediction:,.0f}")
 
     # Save to database
     cursor.execute("""
@@ -124,7 +124,7 @@ if st.button("Predict Price"):
 
 st.markdown("---")
 
-st.subheader("📊 Model Performance")
+st.subheader("Model Performance")
 st.write(f"MAE: ₹ {mae:,.0f}")
 st.write(f"R² Score: {r2:.2f}")
 
